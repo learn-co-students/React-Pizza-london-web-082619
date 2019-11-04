@@ -1,8 +1,10 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import Pizza from '../components/Pizza'
-class PizzaList extends Component {
+
+class PizzaList extends PureComponent {
 
   render() {
+    const pizzas = this.props.pizzas;
     return (
       <table className="table table-striped">
         <thead>
@@ -14,9 +16,15 @@ class PizzaList extends Component {
           </tr>
         </thead>
         <tbody>
-          {
-            //render Pizza here
-          }
+          {pizzas.map(pizza => {
+            return(
+              <Pizza
+                key={pizza.id}
+                pizza={pizza}
+                editPizza={this.props.editPizza}
+              />
+            )
+          })}
         </tbody>
       </table>
     );
