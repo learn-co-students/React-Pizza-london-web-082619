@@ -16,6 +16,7 @@ class PizzaList extends Component {
         <tbody>
           {
             //render Pizza here
+            this.props.pizzas.map(pizza => <Pizza key={pizza.id} pizza={pizza} handleClick={() => this.props.handleClick(pizza.id)}/>)
           }
         </tbody>
       </table>
